@@ -1,0 +1,43 @@
+include "headers.h.rcode"
+useful_defines()
+
+# 0   x+1 x+2 x+3
+# y+1 
+# y+2
+# y+3
+
+
+
+function draw_character(num x, y); => {
+    float length = 4
+    for i in range:length;{
+        draw_color(num x = x;;num y = y;;str color = "white")
+        ++x;
+        ++y;
+    };
+};
+
+function main_loop() => {
+    clear()
+    function get_input(); {
+        str pressed_key = $readkey
+    };
+    while str(True=="True");{
+        draw_character(num x = _x;;num y = _y)
+        if str(keyavailable=="True");{
+            get_input()
+        };
+        $readline
+    };
+};
+
+function main() => {
+    # Define global variables
+    float speed = 40
+    num _x = 5
+    num _y = 10
+    main_loop()
+};
+
+main()
+exit()
